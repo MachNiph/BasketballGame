@@ -488,7 +488,7 @@ Transform:
   m_GameObject: {fileID: 1804885791}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.73, y: -3.16, z: 0}
+  m_LocalPosition: {x: -1.13, y: 2.05, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -509,7 +509,7 @@ MonoBehaviour:
   hoopPrefab: {fileID: 3661070230663808341, guid: c4c10b0004eb1934ba47d8179229cd56, type: 3}
   runSpeed: 1
   jumpSpeed: 15
-  radius: 0.1
+  radius: 0.2
   foodLayerMask:
     serializedVersion: 2
     m_Bits: 512
