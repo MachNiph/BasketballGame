@@ -17,12 +17,16 @@ public class BallMove : MonoBehaviour
     [SerializeField] private float maxRightDir;
     [SerializeField] private float maxLeftDir;
 
+
+    public bool changeHoop=false;
    
 
     void Start()
     {
         ballRb = GetComponent<Rigidbody2D>();
         hoop = Instantiate(hoopPrefab, new Vector2(2.85f, Random.Range(-1, 2.7f)), Quaternion.identity);
+    
+       
     }
 
     void Update()
@@ -66,7 +70,11 @@ public class BallMove : MonoBehaviour
             hoop.transform.position = new Vector2(-hoop.transform.position.x, Random.Range(-1, 2.7f));
             hoop.transform.forward = -hoop.transform.forward;
             runSpeed = -runSpeed;
+            changeHoop = true;
+            
         }
+
+        
     }
 
    
