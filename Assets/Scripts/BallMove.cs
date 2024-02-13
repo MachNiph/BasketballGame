@@ -6,6 +6,8 @@ public class BallMove : MonoBehaviour
     private Rigidbody2D ballRb;
     private GameObject hoop;
 
+   
+
     [SerializeField] private GameObject hoopPrefab;
     [SerializeField] private float runSpeed;
     [SerializeField] private float jumpSpeed;
@@ -14,6 +16,8 @@ public class BallMove : MonoBehaviour
 
     [SerializeField] private float maxRightDir;
     [SerializeField] private float maxLeftDir;
+
+   
 
     void Start()
     {
@@ -27,6 +31,7 @@ public class BallMove : MonoBehaviour
             (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame))
         {
             Jump();
+            
         }
 
         OutsideBounds();
@@ -63,4 +68,6 @@ public class BallMove : MonoBehaviour
             runSpeed = -runSpeed;
         }
     }
+
+   
 }
