@@ -2,41 +2,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DentedPixel;
+using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class TimerBar : MonoBehaviour
 {
-    [SerializeField] private GameObject timeBar;
-    [SerializeField] public int time;
+   [SerializeField] private GameObject timeBar;
+   private Transform timeBarTransform;
+    [SerializeField] public float time; 
+    [SerializeField] private BallMove ballMove;
+    [SerializeField] private GameObject deathMenu;
 
-    private BallMove ballMove;
-    private bool isAnimating = false; // Flag to track if the bar is currently animating
+    private bool isAnimating = false;
+   
 
     void Start()
     {
-        ballMove = GetComponent<BallMove>();
+       timeBarTransform = GetComponent<Transform>();   
         AnimateBar();
     }
 
     void Update()
     {
-        if (ballMove != null && ballMove.changeHoop)
+
+       bool canreset = ballMove.changeHoop;
+
+        if (ballMove != null && canreset)
         {
-            // Check if the bar is not currently animating before restarting the animation
-            if (!isAnimating)
-            {
-                AnimateBar();
-            }
+
+ 
+
+            Debug.Log("joker");
+            
+            LeanTween.reset();
+            ResetTimeBar();
+
+            LeanTween.scaleX(timeBar, 1f, time).setOnComplete(OnComplete);
+            canreset = false;
+
+     
         }
+    }
+
+    void ResetTimeBar()
+    {
+        Debug.Log("milena");
+        
+        LeanTween.scaleX(timeBar, 0f, 0.1f);
+        timeBarTransform.localScale = new Vector3(0,transform.localScale.y,transform.localScale.z);
+        Debug.Log(timeBarTransform.localScale);
+        
     }
 
     void AnimateBar()
     {
-        isAnimating = true; // Set the flag to true indicating animation is in progress
-        LeanTween.scaleX(timeBar, 1, time).setOnComplete(OnComplete);
+        if (!isAnimating)
+        {
+            isAnimating = true;
+            if(timeBar != null) 
+            LeanTween.scaleX(timeBar, 1f, time)
+                .setOnComplete(OnComplete);
+        }
     }
 
     void OnComplete()
     {
-        isAnimating = false; // Reset the flag when animation completes
+      
+        deathMenu.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

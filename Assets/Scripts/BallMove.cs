@@ -18,7 +18,8 @@ public class BallMove : MonoBehaviour
     [SerializeField] private float maxLeftDir;
 
 
-    public bool changeHoop=false;
+    public bool changeHoop;
+    
    
 
     void Start()
@@ -66,15 +67,16 @@ public class BallMove : MonoBehaviour
 
         if (ballHit.collider != null)
         {
+            changeHoop = true;
             Debug.Log("Collided with object: " + ballHit.collider.name + " on layer: " + LayerMask.LayerToName(ballHit.collider.gameObject.layer));
             hoop.transform.position = new Vector2(-hoop.transform.position.x, Random.Range(-1, 2.7f));
             hoop.transform.forward = -hoop.transform.forward;
             runSpeed = -runSpeed;
-            changeHoop = true;
+          
+          
             
         }
 
-        
     }
 
    

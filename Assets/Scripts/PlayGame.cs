@@ -8,18 +8,26 @@ public class PlayGame : MonoBehaviour
     void Start()
     {
         
-        PlayGameAfter();
+      
     }
 
     public void PlayGameAfter()
     {
-        Invoke("Play", 2f);
+        Invoke("Play", 1f);
 
     }
 
     void Play()
     {
-        SceneManager.LoadScene("GamePlay"); 
+        SceneManager.LoadScene("GamePlay");
+    
           
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+
 }
