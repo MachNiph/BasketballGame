@@ -8,6 +8,7 @@ public class Score : MonoBehaviour
     [SerializeField] private BallMove ballMove;
     private int score = 0;
     private Text scoreText;
+    [SerializeField] private AudioSource scoreAudioSource;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class Score : MonoBehaviour
     {
         if (ballMove != null && ballMove.changeHoop)
         {
-            
+            scoreAudioSource.Play();
             score++;
             UpdateScoreText();
 

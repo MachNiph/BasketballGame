@@ -24,8 +24,11 @@ public class BallMove : MonoBehaviour
 
     void Start()
     {
+        
+        Application.targetFrameRate = 60;
         ballRb = GetComponent<Rigidbody2D>();
         hoop = Instantiate(hoopPrefab, new Vector2(2.85f, Random.Range(-1, 2.7f)), Quaternion.identity);
+        
     
        
     }
