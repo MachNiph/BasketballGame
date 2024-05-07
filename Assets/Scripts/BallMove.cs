@@ -35,19 +35,24 @@ public class BallMove : MonoBehaviour
 
     void Update()
     {
-        if ((Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame) ||
-            (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame))
-        {
-            Jump();
-            
-        }
-
         OutsideBounds();
         OnGoal();
     }
 
+    private void FixedUpdate()
+    {
+        if ((Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame) ||
+            (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame))
+        {
+            Jump();
+
+        }
+
+    }
+
     void Jump()
     {
+        ballRb.velocity = Vector3.zero;
         ballRb.AddForce(new Vector2(runSpeed, jumpSpeed), ForceMode2D.Impulse);
     }
 
